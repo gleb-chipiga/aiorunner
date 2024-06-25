@@ -1,0 +1,13 @@
+black
+build
+flake8
+isort
+mypy
+pytest
+pytest-asyncio
+pytest-cov
+pyright
+sort-all
+tox
+twine
+types-setuptools
