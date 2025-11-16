@@ -1,6 +1,6 @@
 .*
 !.gitignore
-!.github/workflows
+!.github
 !.pre-commit-config.yaml
 *.egg-info
 build
