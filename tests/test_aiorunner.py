@@ -1,25 +1,28 @@
 import asyncio
-from typing import AsyncIterator, cast
+from collections.abc import AsyncIterator
+from typing import cast
 
 import pytest
 
 import aiorunner
 from aiorunner import Runner
 
+# pyright: reportPrivateUsage=false
+
 
 def test_runner() -> None:
-    async def context(runner: Runner, a: int, b: str) -> AsyncIterator[None]:
+    async def context(runner: Runner, a: int, b: str) -> AsyncIterator[None]:  # noqa: RUF029
         assert a == 1
         assert b == "s"
-        asyncio.get_running_loop().call_later(0.01, runner.stop)
+        _ = asyncio.get_running_loop().call_later(0.01, runner.stop)
         yield
 
     Runner(context, a=1, b="s").run()
 
 
 def test_runner_signal_handler() -> None:
-    async def context(runner: Runner) -> AsyncIterator[None]:
-        asyncio.get_running_loop().call_later(
+    async def context(runner: Runner) -> AsyncIterator[None]:  # noqa: RUF029
+        _ = asyncio.get_running_loop().call_later(
             0.01, runner._signal_handler, "SIGINT"
         )
         yield
@@ -28,16 +31,16 @@ def test_runner_signal_handler() -> None:
 
 
 def test_runner_context_type_error() -> None:
-    async def context(_: Runner) -> None:
+    async def context(_: Runner) -> None:  # noqa: RUF029
         return None
 
     with pytest.raises(RuntimeError, match="Argument is not async generator"):
-        Runner(cast(aiorunner.ContextFunction, context))
+        _ = Runner(cast(aiorunner.ContextFunction, context))
 
 
 def test_runner_context_multiple_yield_error() -> None:
-    async def context(runner: Runner) -> AsyncIterator[None]:
-        asyncio.get_running_loop().call_later(0.01, runner.stop)
+    async def context(runner: Runner) -> AsyncIterator[None]:  # noqa: RUF029
+        _ = asyncio.get_running_loop().call_later(0.01, runner.stop)
         yield
         yield
 
@@ -46,17 +49,17 @@ def test_runner_context_multiple_yield_error() -> None:
 
 
 def test_runner_context_started_error() -> None:
-    async def context(runner: Runner) -> AsyncIterator[None]:
+    async def context(runner: Runner) -> AsyncIterator[None]:  # noqa: RUF029
         with pytest.raises(RuntimeError, match="Already started"):
             runner.run()
-        asyncio.get_running_loop().call_later(0.01, runner.stop)
+        _ = asyncio.get_running_loop().call_later(0.01, runner.stop)
         yield
 
     Runner(context).run()
 
 
 def test_runner_context_stop_started_error() -> None:
-    async def context(_runner: Runner) -> AsyncIterator[None]:
+    async def context(_runner: Runner) -> AsyncIterator[None]:  # noqa: RUF029
         yield
 
     runner = Runner(context)
@@ -65,8 +68,8 @@ def test_runner_context_stop_started_error() -> None:
 
 
 def test_runner_context_stop_stopped_error() -> None:
-    async def context(_runner: Runner) -> AsyncIterator[None]:
-        asyncio.get_running_loop().call_later(0.01, _runner.stop)
+    async def context(_runner: Runner) -> AsyncIterator[None]:  # noqa: RUF029
+        _ = asyncio.get_running_loop().call_later(0.01, _runner.stop)
         yield
 
     runner = Runner(context)

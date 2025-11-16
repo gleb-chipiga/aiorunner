@@ -3,10 +3,11 @@ __version__ = "0.1.2"
 import asyncio
 import logging
 from asyncio.tasks import Task
+from collections.abc import AsyncIterator, Callable, Mapping
 from contextlib import suppress
 from inspect import isasyncgenfunction
 from signal import SIGINT, SIGTERM
-from typing import Any, AsyncIterator, Callable, Final, Mapping, Optional
+from typing import Any, Final
 
 __all__ = ("ContextFunction", "Runner")
 
@@ -20,14 +21,14 @@ class Runner:
         self,
         context_function: ContextFunction,
         debug: bool = False,
-        **kwargs: Any,
+        **kwargs: Any,  # pyright: ignore[reportExplicitAny, reportAny]
     ) -> None:
         if not isasyncgenfunction(context_function):
             raise RuntimeError("Argument is not async generator")
         self._context_function: Final[ContextFunction] = context_function
-        self._kwargs: Final[Mapping[str, Any]] = kwargs
+        self._kwargs: Final[Mapping[str, Any]] = kwargs  # pyright: ignore[reportExplicitAny]
         self._debug: Final[bool] = debug
-        self._wait_task: Optional[Task[None]] = None
+        self._wait_task: Task[None] | None = None
         self._started: bool = False
         self._stopped: bool = False
 
@@ -70,7 +71,7 @@ class Runner:
         if self._wait_task is None:
             raise RuntimeError("Wait task not spawned")
         self._stopped = True
-        self._wait_task.cancel()
+        _ = self._wait_task.cancel()
 
     def run(self) -> None:
         if self._started:

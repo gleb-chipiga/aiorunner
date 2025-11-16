@@ -1,6 +1,9 @@
 .*
 !.gitignore
+!.github/workflows
+!.pre-commit-config.yaml
 *.egg-info
 build
 dist
 .python-version
+__pycache__
