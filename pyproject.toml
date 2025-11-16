@@ -4,7 +4,7 @@ build-backend = "uv_build"
 
 [project]
 name = "aiorunner"
-version = "0.1.2"
+version = "0.2.0"
 description = "Handle signals and cleanup context"
 readme = "README.rst"
 license = { file = "LICENSE" }
