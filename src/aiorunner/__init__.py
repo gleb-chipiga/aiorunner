@@ -1,5 +1,3 @@
-__version__ = "0.1.2"
-
 import asyncio
 import logging
 from asyncio.tasks import Task
@@ -9,7 +7,9 @@ from inspect import isasyncgenfunction
 from signal import SIGINT, SIGTERM
 from typing import Any, Final
 
-__all__ = ("ContextFunction", "Runner")
+from ._version import __version__
+
+__all__ = ("ContextFunction", "Runner", "__version__")
 
 ContextFunction = Callable[..., AsyncIterator[None]]
 

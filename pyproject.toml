@@ -6,7 +6,7 @@ build-backend = "uv_build"
 name = "aiorunner"
 version = "0.2.0"
 description = "Handle signals and cleanup context"
-readme = "README.rst"
+readme = "README.md"
 license = { file = "LICENSE" }
 authors = [{ name = "Gleb Chipiga" }]
 requires-python = ">=3.11,<3.14"
