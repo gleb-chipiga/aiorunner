@@ -35,26 +35,26 @@ test = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "basedpyright", specifier = ">=1.33.0" },
-    { name = "build", specifier = ">=1.3.0" },
-    { name = "mypy", specifier = ">=1.18.2" },
-    { name = "pytest", specifier = ">=9.0.1" },
-    { name = "pytest-asyncio", specifier = ">=1.3.0" },
-    { name = "pytest-cov", specifier = ">=7.0.0" },
-    { name = "ruff", specifier = ">=0.14.5" },
-    { name = "twine", specifier = ">=6.2.0" },
+    { name = "basedpyright", specifier = ">=1.33.0,<1.34.0" },
+    { name = "build", specifier = ">=1.3.0,<1.4.0" },
+    { name = "mypy", specifier = ">=1.18.2,<1.19.0" },
+    { name = "pytest", specifier = ">=9.0.1,<10.0.0" },
+    { name = "pytest-asyncio", specifier = ">=1.3.0,<1.4.0" },
+    { name = "pytest-cov", specifier = ">=7.0.0,<8.0.0" },
+    { name = "ruff", specifier = ">=0.14.5,<0.15.0" },
+    { name = "twine", specifier = ">=6.2.0,<7.0.0" },
 ]
 lint = [
-    { name = "basedpyright", specifier = ">=1.33.0" },
-    { name = "mypy", specifier = ">=1.18.2" },
-    { name = "pytest", specifier = ">=9.0.1" },
-    { name = "pytest-asyncio", specifier = ">=1.3.0" },
-    { name = "ruff", specifier = ">=0.14.5" },
+    { name = "basedpyright", specifier = ">=1.33.0,<1.34.0" },
+    { name = "mypy", specifier = ">=1.18.2,<1.19.0" },
+    { name = "pytest", specifier = ">=9.0.1,<10.0.0" },
+    { name = "pytest-asyncio", specifier = ">=1.3.0,<1.4.0" },
+    { name = "ruff", specifier = ">=0.14.5,<0.15.0" },
 ]
 test = [
-    { name = "pytest", specifier = ">=9.0.1" },
-    { name = "pytest-asyncio", specifier = ">=1.3.0" },
-    { name = "pytest-cov", specifier = ">=7.0.0" },
+    { name = "pytest", specifier = ">=9.0.1,<10.0.0" },
+    { name = "pytest-asyncio", specifier = ">=1.3.0,<1.4.0" },
+    { name = "pytest-cov", specifier = ">=7.0.0,<8.0.0" },
 ]
 
 [[package]]

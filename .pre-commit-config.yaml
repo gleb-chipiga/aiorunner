@@ -23,8 +23,8 @@ repos:
           - tests
         pass_filenames: false
         additional_dependencies:
-          - pytest>=9.0.1
-          - pytest-asyncio>=1.3.0
+          - pytest>=9.0.1,<10.0.0
+          - pytest-asyncio>=1.3.0,<1.4.0
 
   - repo: https://github.com/DetachHead/basedpyright-prek-mirror
     rev: 1.33.0
