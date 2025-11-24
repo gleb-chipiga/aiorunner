@@ -19,7 +19,7 @@ application.
 pip install aiorunner
 ```
 
-Requires Python 3.11-3.13 (see `pyproject.toml`).
+Requires Python 3.11-3.14 (see `pyproject.toml`).
 
 ## Quick start
 
